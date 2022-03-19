@@ -15,6 +15,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * This class is responsible for providing images of entities and icons
@@ -38,19 +39,19 @@ public class ImageResources {
             case ATOM:
             case POWERUP:
                 AutonomousEntity a = (AutonomousEntity) entity;
-                return getImage(a.getSuperType() + "/" + a.getEntityType() + ".png", width, height);
+                return getImage(a.getSuperType().toString().toLowerCase(Locale.ROOT) + "/" + a.getEntityType().toString().toLowerCase(Locale.ROOT) + ".png", width, height);
 
             case BLOCKER:
                 AutonomousEntity b = (AutonomousEntity) entity;
                 if (config.isDiscoTheme())
-                    return getImage(b.getSuperType() + "/" + b.getEntityType() + ".png", 2 * width, 2 * height);
+                    return getImage(b.getSuperType().toString().toLowerCase(Locale.ROOT) + "/" + b.getEntityType().toString().toLowerCase(Locale.ROOT) + ".png", 2 * width, 2 * height);
                 else
-                    return getImage(b.getSuperType() + "/" + b.getEntityType() + ".png", width, height);
+                    return getImage(b.getSuperType().toString().toLowerCase(Locale.ROOT) + "/" + b.getEntityType().toString().toLowerCase(Locale.ROOT) + ".png", width, height);
 
 
             case MOLECULE:
                 Molecule m = (Molecule) entity;
-                return getImage(m.getSuperType() + "/" + m.getEntityType() + m.getStructure() + ".png", width, height);
+                return getImage(m.getSuperType().toString().toLowerCase(Locale.ROOT) + "/" + m.getEntityType().toString().toLowerCase(Locale.ROOT) + m.getStructure() + ".png", width, height);
 
             //Entity is a Shooter, return shooter image
             case SHOOTER:
